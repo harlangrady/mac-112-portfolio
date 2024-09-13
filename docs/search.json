@@ -28,5 +28,16 @@
     "crumbs": [
       "Notes"
     ]
+  },
+  {
+    "objectID": "notes/note-01.html",
+    "href": "notes/note-01.html",
+    "title": "4  Note 01",
+    "section": "",
+    "text": "5 My reading was interestng",
+    "crumbs": [
+      "Notes",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Note 01</span>"
+    ]
   }
 ]
