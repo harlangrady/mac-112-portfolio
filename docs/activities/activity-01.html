@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>COMP/STAT112 Notebook - 1&nbsp; Activity 01</title>
+<title>COMP/STAT112 Notebook - 1&nbsp; Bivariate Viz Activities</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activities/README.html">Activities</a></li><li class="breadcrumb-item"><a href="../activities/activity-01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Activity 01</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activities/README.html">Activities</a></li><li class="breadcrumb-item"><a href="../activities/activity-01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bivariate Viz Activities</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -165,13 +165,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../activities/activity-01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Activity 01</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bivariate Viz Activities</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../activities/activity-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Activity 02</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Viz Activity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -216,9 +216,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activities/README.html">Activities</a></li><li class="breadcrumb-item"><a href="../activities/activity-01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Activity 01</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../activities/README.html">Activities</a></li><li class="breadcrumb-item"><a href="../activities/activity-01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bivariate Viz Activities</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Activity 01</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bivariate Viz Activities</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -235,6 +235,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Check it out</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">head</span>(elections)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name state_abbr historical    county_name county_fips total_votes_20
+1    Alabama         AL        red Autauga County        1001          27770
+2    Alabama         AL        red Baldwin County        1003         109679
+3    Alabama         AL        red Barbour County        1005          10518
+4    Alabama         AL        red    Bibb County        1007           9595
+5    Alabama         AL        red  Blount County        1009          27588
+6    Alabama         AL        red Bullock County        1011           4613
+  repub_pct_20 dem_pct_20 winner_20 total_votes_16 repub_pct_16 dem_pct_16
+1        71.44      27.02     repub          24661        73.44      23.96
+2        76.17      22.41     repub          94090        77.35      19.57
+3        53.45      45.79     repub          10390        52.27      46.66
+4        78.43      20.70     repub           8748        76.97      21.42
+5        89.57       9.57     repub          25384        89.85       8.47
+6        24.84      74.70       dem           4701        24.23      75.09
+  winner_16 total_votes_12 repub_pct_12 dem_pct_12 winner_12 total_population
+1     repub          23909        72.63      26.58     repub            54907
+2     repub          84988        77.39      21.57     repub           187114
+3     repub          11459        48.34      51.25       dem            27321
+4     repub           8391        73.07      26.22     repub            22754
+5     repub          23980        86.49      12.35     repub            57623
+6       dem           5318        23.51      76.31       dem            10746
+  percent_white percent_black percent_asian percent_hispanic per_capita_income
+1            76            18             1                2             24571
+2            83             9             1                4             26766
+3            46            46             0                5             16829
+4            75            22             0                2             17427
+5            88             1             0                8             20730
+6            22            71             0                6             18628
+  median_rent median_age
+1         668       37.5
+2         693       41.5
+3         382       38.3
+4         351       39.4
+5         403       39.6
+6         276       39.6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>winner_20)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"red"</span>)  <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Election Winners"</span>, <span class="at">x =</span> <span class="st">"winner"</span>, <span class="at">y =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="activity-01_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>repub_pct_20, <span class="at">y=</span>repub_pct_16)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Election Winners"</span>, <span class="at">x =</span> <span class="st">"winner"</span>, <span class="at">y =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="activity-01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <!-- -->
@@ -708,14 +774,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../activities/activity-02.html" class="pagination-link" aria-label="Activity 02">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Activity 02</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../activities/activity-02.html" class="pagination-link" aria-label="Multivariate Viz Activity">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Multivariate Viz Activity</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Activity 01"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> "Bivariate Viz Activities"</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">---</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="in">```{r}</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Load data</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Check it out</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="fu">head</span>(elections)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="in">```</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="in">```{r}</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>winner_20)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"red"</span>)  <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Election Winners"</span>, <span class="at">x =</span> <span class="st">"winner"</span>, <span class="at">y =</span> <span class="st">"count"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="in">```</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="in">```{r}</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>repub_pct_20, <span class="at">y=</span>repub_pct_16)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Election Winners"</span>, <span class="at">x =</span> <span class="st">"winner"</span>, <span class="at">y =</span> <span class="st">"count"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

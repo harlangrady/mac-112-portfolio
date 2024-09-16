@@ -1,4 +1,40 @@
 ---
-title: "Activity 02"
+title: "Multivariate Viz Activity"
 ---
+```{r}
+library(tidyverse)
 
+# Import data
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") |> 
+  mutate(date = as.Date(date))  
+
+# Check out the first 6 rows
+head(weather)
+# What are the units of observation?
+# Date, location
+
+# How many data points do we have? 
+# One year's worth
+
+# What type of variables do we have?
+# Different types of weather
+```
+
+```{r}
+
+# Load the necessary library
+library(ggplot2)
+
+# Example data
+# Assuming df is your data frame and temp3pm is the column of interest
+df <- data.frame(temp3pm = c(15, 20, 25, 30, 35, 20, 25, 30, 32, 28, 22, 18))
+
+
+# Create a histogram
+ggplot(df, aes(x = temp3pm)) +
+  geom_histogram (binwidth = 3, fill = "blue", color = "black") +
+  labs(title = "Histogram of Temperature at 3 PM",
+       x = "Temperature at 3 PM",
+       y = "Frequency")
+
+```

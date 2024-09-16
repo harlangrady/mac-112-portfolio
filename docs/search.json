@@ -20,6 +20,28 @@
     ]
   },
   {
+    "objectID": "activities/activity-01.html",
+    "href": "activities/activity-01.html",
+    "title": "1  Bivariate Viz Activities",
+    "section": "",
+    "text": "# Load data\nelections &lt;- read.csv(\"https://mac-stat.github.io/data/election_2020_county.csv\")\n\n# Check it out\nhead(elections)\n\n  state_name state_abbr historical    county_name county_fips total_votes_20\n1    Alabama         AL        red Autauga County        1001          27770\n2    Alabama         AL        red Baldwin County        1003         109679\n3    Alabama         AL        red Barbour County        1005          10518\n4    Alabama         AL        red    Bibb County        1007           9595\n5    Alabama         AL        red  Blount County        1009          27588\n6    Alabama         AL        red Bullock County        1011           4613\n  repub_pct_20 dem_pct_20 winner_20 total_votes_16 repub_pct_16 dem_pct_16\n1        71.44      27.02     repub          24661        73.44      23.96\n2        76.17      22.41     repub          94090        77.35      19.57\n3        53.45      45.79     repub          10390        52.27      46.66\n4        78.43      20.70     repub           8748        76.97      21.42\n5        89.57       9.57     repub          25384        89.85       8.47\n6        24.84      74.70       dem           4701        24.23      75.09\n  winner_16 total_votes_12 repub_pct_12 dem_pct_12 winner_12 total_population\n1     repub          23909        72.63      26.58     repub            54907\n2     repub          84988        77.39      21.57     repub           187114\n3     repub          11459        48.34      51.25       dem            27321\n4     repub           8391        73.07      26.22     repub            22754\n5     repub          23980        86.49      12.35     repub            57623\n6       dem           5318        23.51      76.31       dem            10746\n  percent_white percent_black percent_asian percent_hispanic per_capita_income\n1            76            18             1                2             24571\n2            83             9             1                4             26766\n3            46            46             0                5             16829\n4            75            22             0                2             17427\n5            88             1             0                8             20730\n6            22            71             0                6             18628\n  median_rent median_age\n1         668       37.5\n2         693       41.5\n3         382       38.3\n4         351       39.4\n5         403       39.6\n6         276       39.6\n\n\n\nlibrary(ggplot2)\nggplot(elections, aes(x=winner_20)) + geom_bar(fill=\"red\")  + labs(title=\"Election Winners\", x = \"winner\", y = \"count\")\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nggplot(elections, aes(x=repub_pct_20, y=repub_pct_16)) + geom_point() + labs(title=\"Election Winners\", x = \"winner\", y = \"count\")",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bivariate Viz Activities</span>"
+    ]
+  },
+  {
+    "objectID": "activities/activity-02.html",
+    "href": "activities/activity-02.html",
+    "title": "2  Multivariate Viz Activity",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Import data\nweather &lt;- read.csv(\"https://mac-stat.github.io/data/weather_3_locations.csv\") |&gt; \n  mutate(date = as.Date(date))  \n\n# Check out the first 6 rows\nhead(weather)\n\n        date   location mintemp maxtemp rainfall evaporation sunshine\n1 2020-01-01 Wollongong    17.1    23.1        0          NA       NA\n2 2020-01-02 Wollongong    17.7    24.2        0          NA       NA\n3 2020-01-03 Wollongong    19.7    26.8        0          NA       NA\n4 2020-01-04 Wollongong    20.4    35.5        0          NA       NA\n5 2020-01-05 Wollongong    19.8    21.4        0          NA       NA\n6 2020-01-06 Wollongong    18.3    22.9        0          NA       NA\n  windgustdir windgustspeed winddir9am winddir3pm windspeed9am windspeed3pm\n1         SSW            39        SSW        SSE           20           15\n2         SSW            37          S        ENE           13           15\n3          NE            41        NNW        NNE            7           17\n4         SSW            78         NE        NNE           15           17\n5         SSW            57        SSW          S           31           35\n6          NE            35        ESE         NE           17           20\n  humidity9am humidity3pm pressure9am pressure3pm cloud9am cloud3pm temp9am\n1          69          64      1014.9      1014.0        8        1    19.1\n2          72          54      1020.1      1017.7        7        1    19.8\n3          72          71      1017.5      1013.0        6       NA    23.4\n4          77          69      1008.8      1003.9       NA       NA    24.5\n5          70          75      1018.9      1019.9       NA        7    20.7\n6          71          71      1021.2      1018.2       NA       NA    20.9\n  temp3pm raintoday risk_mm raintomorrow\n1    22.9        No     0.0           No\n2    23.6        No     0.0           No\n3    25.7        No     0.0           No\n4    26.7        No     0.0           No\n5    20.0        No     0.0           No\n6    22.6        No     0.8           No\n\n# What are the units of observation?\n# Date, location\n\n# How many data points do we have? \n# One year's worth\n\n# What type of variables do we have?\n# Different types of weather\n\n\n# Load the necessary library\nlibrary(ggplot2)\n\n# Example data\n# Assuming df is your data frame and temp3pm is the column of interest\ndf &lt;- data.frame(temp3pm = c(15, 20, 25, 30, 35, 20, 25, 30, 32, 28, 22, 18))\n\n\n# Create a histogram\nggplot(df, aes(x = temp3pm)) +\n  geom_histogram (binwidth = 3, fill = \"blue\", color = \"black\") +\n  labs(title = \"Histogram of Temperature at 3 PM\",\n       x = \"Temperature at 3 PM\",\n       y = \"Frequency\")",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Multivariate Viz Activity</span>"
+    ]
+  },
+  {
     "objectID": "notes/README.html",
     "href": "notes/README.html",
     "title": "Notes",
@@ -27,17 +49,6 @@
     "text": "All notes live here.",
     "crumbs": [
       "Notes"
-    ]
-  },
-  {
-    "objectID": "notes/note-01.html",
-    "href": "notes/note-01.html",
-    "title": "4  Note 01",
-    "section": "",
-    "text": "5 My reading was interestng",
-    "crumbs": [
-      "Notes",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Note 01</span>"
     ]
   }
 ]
